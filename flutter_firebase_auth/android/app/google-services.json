@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "301451017357",
+    "firebase_url": "https://loginauth-4f0de.firebaseio.com",
+    "project_id": "loginauth-4f0de",
+    "storage_bucket": "loginauth-4f0de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301451017357:android:0abe55eefa76db0fd776c4",
+        "android_client_info": {
+          "package_name": "com.darklord.flutter_firebase_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301451017357-1smk3tollcqv48kjt3b9bgkn82th9lqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjW79JQmOK-c8vYvcnKPqUyPWKoL190n8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301451017357-1smk3tollcqv48kjt3b9bgkn82th9lqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
