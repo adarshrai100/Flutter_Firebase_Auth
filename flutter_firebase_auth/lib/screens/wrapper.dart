@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/models/CustomUser.dart';
 import 'package:flutter_firebase_auth/screens/authenticate/authenticate.dart';

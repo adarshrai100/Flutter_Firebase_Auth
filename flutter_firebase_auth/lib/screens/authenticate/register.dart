@@ -1,8 +1,12 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_auth/models/CustomUser.dart';
 import 'package:flutter_firebase_auth/services/auth.dart';
 import 'package:flutter_firebase_auth/shared/constants.dart';
 import 'package:flutter_firebase_auth/shared/loading.dart';
+import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
 
@@ -15,6 +19,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
+
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading=false;
@@ -22,7 +27,11 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String name='';
+  String country='';
   String error = '';
+
+  TextEditingController _userCountryController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +73,23 @@ class _RegisterState extends State<Register> {
                 },
               ),
               SizedBox(height: 20.0),
+              TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Name'),
+                validator: (val) => val.isEmpty ? 'Enter valid Name' : null,
+                onChanged: (val) {
+                  setState(() => name = val);
+                },
+              ),
+              SizedBox(height: 20.0),
+              TextFormField(
+                controller: _userCountryController,
+                decoration: textInputDecoration.copyWith(hintText: 'Country'),
+                validator: (val) => val.isEmpty  ? 'Enter Valid Country' : null,
+                onChanged: (val) {
+                  setState(() => country = val);
+                },
+              ),
+              SizedBox(height: 20.0),
               RaisedButton(
                   color: Colors.orange[900],
                   child: Text(
@@ -75,7 +101,8 @@ class _RegisterState extends State<Register> {
                       setState(() {
                         loading = true;
                       });
-                      dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                      CustomUserFields customUserFields =CustomUserFields(name,country);
+                      dynamic result = await _auth.registerWithEmailAndPassword(email, password,customUserFields);
                       if(result == null) {
                         setState(() {
                           loading = false;
@@ -83,6 +110,9 @@ class _RegisterState extends State<Register> {
                         });
                       }
                     }
+
+                   // customUserFields.country =_userCountryController.text;
+                    //final uid = Provider.of(context).auth.getCurrentUID();
                   }
               ),
               SizedBox(height: 12.0),
